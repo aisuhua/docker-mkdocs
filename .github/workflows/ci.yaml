@@ -20,6 +20,7 @@ jobs:
           images: aisuhua/mkdocs
           tags: |
             type=raw,value={{date 'YYYYMMDD'}}
+            type=raw,value=latest
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
