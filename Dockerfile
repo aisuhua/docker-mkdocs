@@ -6,6 +6,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 && pip install --no-cache-dir mkdocs \
     mkdocs-material \
     mkdocs-git-revision-date-localized-plugin \
-    mkdocs-glightbox
+    mkdocs-glightbox \
+    mkdocs-git-authors-plugin
 
 WORKDIR /src
