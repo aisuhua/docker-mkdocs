@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mkdocs:
-    image: "aisuhua/mkdocs-material:${VERSION:-latest}"
+    image: "aisuhua/mkdocs:${VERSION:-latest}"
     build:
       context: .
       args:
@@ -11,3 +11,15 @@ services:
       - 8000:8000
     volumes: 
       - .:/docs
+
+  mkdocs-webhook:
+    image: "aisuhua/mkdocs-webhook:${VERSION:-latest}"
+    build:
+      context: .
+      dockerfile: webhook.Dockerfile
+      args:
+        VERSION: "${VERSION:-latest}"
+    environment:
+      - REPO_URL=http://197.197.0.11:3000/sysadmin/docs.git
+    ports:
+      - 9000:9000 
