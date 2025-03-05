@@ -13,13 +13,13 @@ services:
       - .:/docs
 
   mkdocs-webhook:
-    image: "aisuhua/mkdocs-webhook:${VERSION:-latest}"
+    image: "aisuhua/mkdocs:${VERSION:-latest}-webhook"
     build:
       context: .
       dockerfile: webhook.Dockerfile
       args:
         VERSION: "${VERSION:-latest}"
     environment:
-      - REPO_URL=http://197.197.0.11:3000/sysadmin/docs.git
+      - REPO_URL=http://197.197.0.11:3000/sysadmin/docker-mkdocs.git
     ports:
       - 9000:9000 
