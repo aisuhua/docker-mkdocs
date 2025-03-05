@@ -7,6 +7,7 @@ services:
       context: .
       args:
         VERSION: "${VERSION:-latest}"
+    user: root
     ports:
       - 8000:8000
     volumes: 
@@ -19,7 +20,18 @@ services:
       dockerfile: webhook.Dockerfile
       args:
         VERSION: "${VERSION:-latest}"
+    user: root
     environment:
       - REPO_URL=http://197.197.0.11:3000/sysadmin/docker-mkdocs.git
+    volumes: 
+      - ./site:/site
     ports:
       - 9000:9000 
+
+  nginx:
+    image: nginx:1.27.4
+    user: root
+    volumes:
+      - ./site:/usr/share/nginx/html
+    ports:
+      - 8080:80
